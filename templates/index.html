@@ -1,1 +1,264 @@
+<!DOCTYPE html>
+<html>
 
+<head>
+    <style>
+        body {
+            background-color: rgb(94, 118, 163);
+        }
+    </style>
+    <title>
+        Health Prediction
+    </title>
+</head>
+
+<body>
+    <h1 align="center"><b>Diagnosis Model</b></h1>
+    <form align="center" action="{{ url_for('predict')}}" method="post">
+        <select id="Gender" name="Gender">
+            <optgroup label="Gender">
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+            </optgroup>
+        </select>
+
+        <input type="text" name="Time(hours)" placeholder="Time(hours)" />
+        <input type="text" name="Previous cycle" placeholder="Previous cycle" />
+        <input type="text" name="No of stooling per day" placeholder="No of stooling per day" />
+
+        <select id="Symptom 1" name="Symptom 1">
+          <optgroup label="Symptom 1">
+                    <option value="5">Fever</option>
+                    <option value="0">Abdominal cramps</option>
+                    <option value="16">breast swelling</option>
+                    <option value="1">Abdominal pain</option>
+                    <option value="15">breakouts</option>
+                    <option value="12">Watery Stools</option>
+                    <option value="13">axiety</option>
+                    <option value="11">Tender breasts</option>
+                    <option value="4">Feeling sick</option>
+                    <option value="20">pelvic pain</option>
+                    <option value="14">blood in stool</option>
+                    <option value="17">feeling bloated</option>
+                    <option value="10">Stomach pain</option>
+                    <option value="8">Nausa</option>
+                    <option value="3">Dark urine</option>
+                    <option value="2">Blood flow from vagina</option>
+                    <option value="7">High temperature</option>
+                    <option value="6">Headache</option>
+                    <option value="9">Poor appetite</option>
+
+          </optgroup>
+         </select>
+        <select id="Symptom 2" name="Symptom 2">
+          <optgroup label="Symptom 2">
+                    <option value="6">Headache</option>
+                    <option value="3">Chills</option>
+                    <option value="0">Abdominal Cramps</option>
+                    <option value="11">bloating</option>
+                    <option value="1">Abdominal pains</option>
+                    <option value="19">tension</option>
+                    <option value="12">breakouts</option>
+                    <option value="10">Rapid heart rate</option>
+                    <option value="9">Persistent Vomiting</option>
+                    <option value="17">mood swings</option>
+                    <option value="8">Moodiness</option>
+                    <option value="7">Lower back pain</option>
+                    <option value="20">vomiting</option>
+                    <option value="16">joint pain</option>
+                    <option value="13">breast are sore and heavy</option>
+                    <option value="18">shivering</option>
+                    <option value="5">Cough</option>
+                    <option value="15">diarrhea</option>
+
+          </optgroup>
+         </select>
+
+
+        <select id="Symptom 3" name="Symptom 3">
+          <optgroup label="Symptom 3">
+                    <option value="6">Nausea</option>
+                    <option value="1">Fatigue</option>
+                    <option value="11">bloating</option>
+                    <option value="15">headache</option>
+                    <option value="14">fever</option>
+                    <option value="21">watery faeces</option>
+                    <option value="19">stomache ache</option>
+                    <option value="20">vomitting</option>
+                    <option value="17">joint pain</option>
+                    <option value="3">Food cravings</option>
+                    <option value="18">sore breasts</option>
+                    <option value="13">feeling irritable</option>
+                    <option value="12">cramping</option>
+                    <option value="9">Tender breasts</option>
+                    <option value="10">Trouble sleeping</option>
+                    <option value="7">Sweating</option>
+                    <option value="0">Chills</option>
+                    <option value="4">General feeling of discomfort</option>         
+
+          </optgroup>
+         </select>
+
+        <select id="Symptom 4" name="Symptom 4">
+          <optgroup label="Symptom 4">
+                    <option value="2">Headache</option>
+                    <option value="1">Food cravings</option>
+                    <option value="13">dizziness</option>
+                    <option value="8">Weight loss</option>
+                    <option value="11">chills</option>
+                    <option value="6">Sweats</option>
+                    <option value="10">breakout</option>
+                    <option value="20">nausea</option>
+                    <option value="12">cramps</option>
+                    <option value="15">fatigue</option>
+                    <option value="16">greasy hair</option>
+                    <option value="3">Mood swings</option>
+                    <option value="9">bloating</option>
+                    <option value="7">Vomiting</option>
+                    <option value="14">dry skin</option>
+                    <option value="5">Painful joints</option>
+                    <option value="4">Muscle ache</option>
+                    <option value="19">high temperature</option>
+                  
+
+          </optgroup>
+         </select>
+        <select id="Symptom 5" name="Symptom 5">
+          <optgroup label="Symptom 5">
+                    <option value="17">Nausea</option>
+                    <option value="12">bloating</option>
+                    <option value="2">dehydration</option>
+                    <option value="19">Fatigue</option>
+                    <option value="23">leg  pain</option>
+                    <option value="15">vomiting</option>
+                    <option value="0">Mood swings</option>
+                    <option value="21">constipation</option>
+                    <option value="10">nausea</option>
+                    <option value="11">abdominal bloating</option>
+                    <option value="4">acne</option>
+                    <option value="6">Headache</option>
+                    <option value="13">blood flow from  vagina</option>
+                    <option value="18">fever</option>
+                    <option value="5">Irritability</option>
+                    <option value="16">cramps in lower abdomen</option>
+                    <option value="20">muscle aches</option>
+                    <option value="14">Sweating</option>
+                    <option value="9">chills</option>
+                    <option value="1">Body aches</option>
+                    <option value="8">Shivering</option>
+                    <option value="22">sweating</option>
+          </optgroup>
+         </select>
+        <select id="Symptom 6" name="Symptom 6">
+          <optgroup label="Symptom 6">
+                    <option value="0">None</option>
+                    <option value="4">Nausea</option>
+                    <option value="17">vomiting</option>
+                    <option value="6">abdominal cramps</option>
+                    <option value="3">headache</option>
+                    <option value="11">dizziness</option>
+                    <option value="15">breast tenderness</option>
+                    <option value="8">Fatigue</option>
+                    <option value="5">bloated</option>
+                    <option value="9">body aches</option>
+                    <option value="13">bowel issues</option>
+                    <option value="7">Blood in the stool</option>
+                    <option value="16">headaches</option>
+                    <option value="2">fever</option>
+                    <option value="14">Excessive sweating</option>
+          </optgroup>
+         </select>
+        <select id="Symptom 7" name="Symptom 7">
+          <optgroup label="Symptom 7">
+                    <option value="0">None</option>
+                    <option value="12">headache</option>
+                    <option value="11">fatigue</option>
+                    <option value="15">loss of control of bowel movements</option>
+                    <option value="6">acne</option>
+                    <option value="9">constipation</option>
+                    <option value="14">cramps in lower back</option>
+                    <option value="7">bleeding from the vagina</option>
+                    <option value="8">loss of appetite</option>
+                    <option value="13">chills</option>
+                    <option value="3">large volume of stool</option>
+                    <option value="17">Mucus in the stool</option>
+                    <option value="10">nausea</option>
+                    <option value="1">Body pain</option>
+                    <option value="5">Vomiting</option>
+                    <option value="20">weakness</option>
+                    <option value="18">sweats</option>
+                    <option value="16">muscle pain</option>
+                
+          </optgroup>
+         </select>
+        <select id="Symptom 8" name="Symptom 8">
+          <optgroup label="Symptom 8">
+                    <option value="0">NONE</option>
+                    <option value="7">GENERALLY FEELING UNWELL</option>
+                    <option value="9">MOOD SWINGS</option>
+                    <option value="3">BODY PAIN</option>
+                    <option value="1">ABDOMINAL PAIN</option>
+                    <option value="2">BLOATING</option>
+                    <option value="10">VOMITING</option>
+                    <option value="6">FATIGUE</option>
+                    <option value="8">LOWER BACK PAIN</option>
+                    <option value="4">CONSTIPATION</option>
+                    <option value="5">DIARRHEA</option>
+          </optgroup>
+         </select>
+        <select id="Symptom 9" name="Symptom 9">
+          <optgroup label="Symptom 9">
+                    <option value="0">NONE</option>
+                    <option value="3">BREAST TENDERNESS </option>
+                    <option value="7">LOWER BACK PAIN</option>
+                    <option value="5">DEHYDRATION</option>
+                    <option value="9">TROUBLE SLEEPING</option>
+                    <option value="2">ANXIETY</option>
+                    <option value="6">GENERALLY FEELING SICK</option>
+                    <option value="1">ANAEMIA</option>
+                    <option value="8">MUSCLE OR JOINT PAIN</option>
+                    <option value="4">COUGHING</option>
+          </optgroup>
+         </select>
+
+        <select id="Symptom 10" name="Symptom 10">
+          <optgroup label="Symptom 10">
+                    <option value="0">NONE</option>
+                    <option value="2">FATIGUE</option>
+                    <option value="1">ACNE</option>
+                    <option value="4">TROUBLE SLEEPING</option>
+                    <option value="3">LOWER BACK PAIN</option>
+          </optgroup>
+         </select>
+
+        <select id="Symptom 11" name="Symptom 11">
+          <optgroup label="Symptom 11">
+                    <option value="0">NONE</option>
+                    <option value="1">BLOOD FROM VAGINA</option>
+                    <option value="2">RAPID BREATHING</option>
+          </optgroup>
+         </select>
+        <select id="Symptom 12" name="Symptom 12">
+          <optgroup label="Symptom 12">
+                    <option value="0">NONE</option>
+                    <option value="1">RAPID HEART RATE</option>
+          </optgroup>
+         </select>
+
+        <select id="Symptom 13" name="Symptom 13">
+          <optgroup label="Symptom 13">
+                    <option value="0">NONE</option>
+                    <option value="1">COUGH</option>
+          </optgroup>
+         </select>
+        <br>
+        <br>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+    <br>
+    <br>
+    <p align="center"> {{prediction_text}} </p>
+</body>
+
+</html>
